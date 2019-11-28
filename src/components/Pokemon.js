@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export class Pokemon extends React.Component {
-  renderTemplatePokemon = () => {
+  renderTemplate = () => {
     const { name, error, isFetching } = this.props;
 
     if (error) {
@@ -14,7 +14,7 @@ export class Pokemon extends React.Component {
     }
 
     if (name) {
-      return <p> {name}</p>;
+      return <p>Привет, {name}!</p>;
     } else {
       return (
         <button className="btn" onClick={this.props.handlePokemon}>
@@ -24,7 +24,7 @@ export class Pokemon extends React.Component {
     }
   };
   render() {
-    return <div className="ib user">{this.renderTemplatePokemon()}</div>;
+    return <div className="ib pokemon">{this.renderTemplate()}</div>;
   }
 }
 
