@@ -3,26 +3,23 @@ export const POKEMON_SUCCESS = "POKEMON_SUCCESS";
 export const POKEMON_FAIL = "POKEMON_FAIL";
 
 export function handlePokemon(pokemon) {
+  let url = "https://pokeapi.co/api/v2/pokemon";
+
   return function(dispatch) {
     dispatch({
       type: POKEMON_REQUEST
     });
     //eslint-disable-next-line no-undef
-    VK.Auth.login(r => {
-      if (r.session) {
-        let username = r.session.user.first_name;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        let pokemonname = data.results;
 
         dispatch({
           type: POKEMON_SUCCESS,
-          payload: username
+          payload: pokemonname
         });
-      } else {
-        dispatch({
-          type: POKEMON_FAIL,
-          error: true,
-          payload: new Error("Ошибка")
-        });
-      }
-    }, 4);
+      });
   };
 }

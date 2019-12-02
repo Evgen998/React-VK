@@ -14,7 +14,7 @@ export class Pokemon extends React.Component {
     }
 
     if (name) {
-      return <p>Привет, {name}!</p>;
+      return <p>Покемоны: [{name}]!</p>;
     } else {
       return (
         <button className="btn" onClick={this.props.handlePokemon}>
@@ -29,7 +29,7 @@ export class Pokemon extends React.Component {
 }
 
 Pokemon.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.array.isRequired,
   error: PropTypes.string,
   isFetching: PropTypes.bool.isRequired,
   handlePokemon: PropTypes.func.isRequired

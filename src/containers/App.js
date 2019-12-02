@@ -18,6 +18,7 @@ class App extends Component {
       handleLoginAction,
       handlePokemonAction
     } = this.props;
+
     return (
       <div className="app">
         <Page
