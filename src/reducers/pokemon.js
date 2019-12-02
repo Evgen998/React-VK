@@ -5,7 +5,7 @@ import {
 } from "../actions/PokemonActions";
 
 const initialState = {
-  name: [],
+  name: "",
   error: "", // добавили для сохранения текста ошибки
   isFetching: false // добавили для реакции на статус "загружаю" или нет
 };
