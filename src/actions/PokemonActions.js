@@ -14,11 +14,11 @@ export function handlePokemon(pokemon) {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        let pokemonname = data.results;
+        // data.results;
 
         dispatch({
           type: POKEMON_SUCCESS,
-          payload: pokemonname
+          payload: data.results
         });
       });
   };

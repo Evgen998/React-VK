@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export class Pokemon extends React.Component {
   renderTemplate = () => {
-    const { name, error, isFetching } = this.props;
+    const { error, isFetching, pokemons } = this.props;
 
     if (error) {
       return <p>Во время запроса произошла ошибка, обновите страницу</p>;
@@ -13,8 +13,8 @@ export class Pokemon extends React.Component {
       return <p>Загружаю...</p>;
     }
 
-    if (name) {
-      return <p>Покемоны: [{name}]!</p>;
+    if (pokemons) {
+      return <p>Покемоны: {pokemons}!</p>;
     } else {
       return (
         <button className="btn" onClick={this.props.handlePokemon}>
@@ -23,13 +23,14 @@ export class Pokemon extends React.Component {
       );
     }
   };
+
   render() {
     return <div className="ib pokemon">{this.renderTemplate()}</div>;
   }
 }
 
 Pokemon.propTypes = {
-  name: PropTypes.array.isRequired,
+  pokemons: PropTypes.array.isRequired,
   error: PropTypes.string,
   isFetching: PropTypes.bool.isRequired,
   handlePokemon: PropTypes.func.isRequired

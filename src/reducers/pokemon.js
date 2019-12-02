@@ -5,7 +5,7 @@ import {
 } from "../actions/PokemonActions";
 
 const initialState = {
-  name: "",
+  pokemons: [],
   error: "", // добавили для сохранения текста ошибки
   isFetching: false // добавили для реакции на статус "загружаю" или нет
 };
@@ -16,7 +16,7 @@ export function pokemonReducer(state = initialState, action) {
       return { ...state, isFetching: true, error: "" };
 
     case POKEMON_SUCCESS:
-      return { ...state, isFetching: false, name: action.payload };
+      return { ...state, isFetching: false, pokemons: action.payload };
 
     case POKEMON_FAIL:
       return { ...state, isFetching: false, error: action.payload.message };
