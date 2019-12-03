@@ -6,5 +6,5 @@ import { pokemonReducer } from "./pokemon";
 export const rootReducer = combineReducers({
   page: pageReducer,
   user: userReducer,
-  pokemon: pokemonReducer
+  pokemons: pokemonReducer
 });

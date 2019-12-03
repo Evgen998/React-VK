@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { User } from "../components/User";
 import { Page } from "../components/Page";
-import { Pokemon } from "../components/Pokemon";
+import { Pokemons } from "../components/Pokemons";
 import { getPhotos } from "../actions/PageActions";
 import { handleLogin } from "../actions/UserActions";
 import { handlePokemon } from "../actions/PokemonActions";
@@ -13,12 +13,12 @@ class App extends Component {
     const {
       user,
       page,
-      pokemon,
+      pokemons,
       getPhotosAction,
       handleLoginAction,
       handlePokemonAction
     } = this.props;
-
+    console.log(pokemons);
     return (
       <div className="app">
         <Page
@@ -34,10 +34,10 @@ class App extends Component {
           error={user.error}
           handleLogin={handleLoginAction}
         />
-        <Pokemon
-          name={pokemon.name}
-          isFetching={pokemon.isFetching}
-          error={pokemon.error}
+        <Pokemons
+          pokemon={[pokemons]}
+          isFetching={pokemons.isFetching}
+          error={pokemons.error}
           handlePokemon={handlePokemonAction}
         />
       </div>
@@ -49,7 +49,7 @@ const mapStateToProps = store => {
   return {
     user: store.user, // вытащили из стора (из редьюсера user все в переменную thid.props.user)
     page: store.page,
-    pokemon: store.pokemon
+    pokemons: store.pokemons
   };
 };
 

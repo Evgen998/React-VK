@@ -2,7 +2,7 @@ export const POKEMON_REQUEST = "POKEMON_REQUEST";
 export const POKEMON_SUCCESS = "POKEMON_SUCCESS";
 export const POKEMON_FAIL = "POKEMON_FAIL";
 
-export function handlePokemon(pokemon) {
+export function handlePokemon(pokemons) {
   let url = "https://pokeapi.co/api/v2/pokemon";
 
   return function(dispatch) {
