@@ -5,7 +5,7 @@ export const POKEMON_FAIL = "POKEMON_FAIL";
 export function handlePokemon(pokemons) {
   let url = "https://pokeapi.co/api/v2/pokemon";
 
-  return function(dispatch) {
+  return function getPokemons(dispatch) {
     dispatch({
       type: POKEMON_REQUEST
     });
@@ -14,11 +14,11 @@ export function handlePokemon(pokemons) {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        // data.results;
+        //  data.results;
 
         dispatch({
           type: POKEMON_SUCCESS,
-          payload: data.results
+          payload: data
         });
       });
   };

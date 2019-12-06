@@ -6,6 +6,8 @@ import { Pokemons } from "../components/Pokemons";
 import { getPhotos } from "../actions/PageActions";
 import { handleLogin } from "../actions/UserActions";
 import { handlePokemon } from "../actions/PokemonActions";
+import { handleNavbar } from "../actions/NavbarActions";
+import { Navigation } from "../components/Navigation";
 
 class App extends Component {
   render() {
@@ -13,12 +15,13 @@ class App extends Component {
     const {
       user,
       page,
-      pokemons,
+      pokemon,
+      next,
       getPhotosAction,
       handleLoginAction,
       handlePokemonAction
     } = this.props;
-    console.log(pokemons);
+
     return (
       <div className="app">
         <Page
@@ -35,11 +38,12 @@ class App extends Component {
           handleLogin={handleLoginAction}
         />
         <Pokemons
-          pokemon={[pokemons]}
-          isFetching={pokemons.isFetching}
-          error={pokemons.error}
+          pokemons={pokemon.pokemons}
+          isFetching={pokemon.isFetching}
+          error={pokemon.error}
           handlePokemon={handlePokemonAction}
         />
+        <Navigation next={next} />
       </div>
     );
   }
@@ -49,7 +53,8 @@ const mapStateToProps = store => {
   return {
     user: store.user, // вытащили из стора (из редьюсера user все в переменную thid.props.user)
     page: store.page,
-    pokemons: store.pokemons
+    pokemon: store.pokemons,
+    next: store.next
   };
 };
 
@@ -58,7 +63,8 @@ const mapDispatchToProps = dispatch => {
     getPhotosAction: year => dispatch(getPhotos(year)),
     // "приклеили" в this.props.handleLoginAction функцию, которая умеет диспатчить handleLogin
     handleLoginAction: () => dispatch(handleLogin()),
-    handlePokemonAction: () => dispatch(handlePokemon())
+    handlePokemonAction: () => dispatch(handlePokemon()),
+    handleNavbarAction: () => dispatch(handleNavbar())
   };
 };
 
