@@ -7,6 +7,7 @@ import {
 const initialState = {
   pokemons: [],
   next: "",
+  offset: "",
   error: "", // добавили для сохранения текста ошибки
   isFetching: false // добавили для реакции на статус "загружаю" или нет
 };
@@ -21,7 +22,8 @@ export function pokemonReducer(state = initialState, action) {
         ...state,
         isFetching: false,
         pokemons: action.payload.results,
-        next: action.payload.next
+        next: action.payload.next,
+        offset: action.payload.offset
       };
 
     case POKEMON_FAIL:

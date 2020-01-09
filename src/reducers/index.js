@@ -7,5 +7,6 @@ export const rootReducer = combineReducers({
   page: pageReducer,
   user: userReducer,
   pokemons: pokemonReducer,
-  next: pokemonReducer
+  next: pokemonReducer,
+  offset: pokemonReducer
 });

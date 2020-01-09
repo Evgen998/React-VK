@@ -29,6 +29,7 @@ function getMorePhotos(offset, count, year, dispatch) {
     r => {
       try {
         photosArr = photosArr.concat(r.response.items);
+
         if (offset <= r.response.count) {
           offset += 200; // максимальное количество фото которое можно получить за 1 запрос
           getMorePhotos(offset, count, year, dispatch);

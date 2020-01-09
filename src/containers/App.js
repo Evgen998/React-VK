@@ -6,7 +6,6 @@ import { Pokemons } from "../components/Pokemons";
 import { getPhotos } from "../actions/PageActions";
 import { handleLogin } from "../actions/UserActions";
 import { handlePokemon } from "../actions/PokemonActions";
-import { handleNavbar } from "../actions/NavbarActions";
 import { Navigation } from "../components/Navigation";
 
 class App extends Component {
@@ -17,11 +16,12 @@ class App extends Component {
       page,
       pokemon,
       next,
+      offset,
       getPhotosAction,
       handleLoginAction,
       handlePokemonAction
     } = this.props;
-
+    console.log(offset);
     return (
       <div className="app">
         <Page
@@ -43,7 +43,11 @@ class App extends Component {
           error={pokemon.error}
           handlePokemon={handlePokemonAction}
         />
-        <Navigation next={next} />
+        <Navigation
+          next={next}
+          offset={offset}
+          handlePokemon={handlePokemonAction}
+        />
       </div>
     );
   }
@@ -54,7 +58,8 @@ const mapStateToProps = store => {
     user: store.user, // вытащили из стора (из редьюсера user все в переменную thid.props.user)
     page: store.page,
     pokemon: store.pokemons,
-    next: store.next
+    next: store.next,
+    offset: store.offset
   };
 };
 
@@ -63,8 +68,7 @@ const mapDispatchToProps = dispatch => {
     getPhotosAction: year => dispatch(getPhotos(year)),
     // "приклеили" в this.props.handleLoginAction функцию, которая умеет диспатчить handleLogin
     handleLoginAction: () => dispatch(handleLogin()),
-    handlePokemonAction: () => dispatch(handlePokemon()),
-    handleNavbarAction: () => dispatch(handleNavbar())
+    handlePokemonAction: () => dispatch(handlePokemon())
   };
 };
 
