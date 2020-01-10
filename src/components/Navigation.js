@@ -1,31 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-//import { handlePokemon } from "../actions/PokemonActions";
+//import { connect } from "react-redux";
+
 export class Navigation extends React.Component {
-  functionNavigation = () => {
-    const { offset } = this.props;
-
-    console.log(this.props);
-    this.props.handlePokemon(offset);
-  };
-
   render() {
-    return <button onClick={this.functionNavigation}>Дальше</button>;
+    const { offset, handlePokemon } = this.props;
+    console.log(offset);
+
+    console.log(this.props.offset);
+
+    return <button onClick={() => handlePokemon(+20)}>Дальше </button>;
   }
 }
 
 Navigation.propTypes = {
-  offset: PropTypes.string
+  offset: PropTypes.number
 };
 
-const mapStateToProps = store => {
-  return {
-    offset: store.offset
-  };
-};
-const mapDispatchToProps = dispatch => {
-  // handlePokemonAction: (offset) => dispatch(handlePokemon(offset+10, 30))
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default Navigation;

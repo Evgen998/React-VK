@@ -45,7 +45,7 @@ class App extends Component {
         />
         <Navigation
           next={next}
-          offset={offset}
+          offset={pokemon.offset}
           handlePokemon={handlePokemonAction}
         />
       </div>
@@ -54,12 +54,11 @@ class App extends Component {
 }
 
 const mapStateToProps = store => {
+  console.log(store);
   return {
     user: store.user, // вытащили из стора (из редьюсера user все в переменную thid.props.user)
     page: store.page,
-    pokemon: store.pokemons,
-    next: store.next,
-    offset: store.offset
+    pokemon: store.pokemons
   };
 };
 
@@ -68,7 +67,7 @@ const mapDispatchToProps = dispatch => {
     getPhotosAction: year => dispatch(getPhotos(year)),
     // "приклеили" в this.props.handleLoginAction функцию, которая умеет диспатчить handleLogin
     handleLoginAction: () => dispatch(handleLogin()),
-    handlePokemonAction: () => dispatch(handlePokemon())
+    handlePokemonAction: offset => dispatch(handlePokemon(offset, 20))
   };
 };
 

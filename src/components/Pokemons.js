@@ -29,7 +29,6 @@ export class Pokemons extends React.Component {
       ));
     }
   };
-
   render() {
     return <div className="ib pokemon">{this.renderTemplate()}</div>;
   }
