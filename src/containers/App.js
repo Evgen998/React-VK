@@ -15,13 +15,10 @@ class App extends Component {
       user,
       page,
       pokemon,
-      next,
-      offset,
       getPhotosAction,
       handleLoginAction,
       handlePokemonAction
     } = this.props;
-    console.log(offset);
     return (
       <div className="app">
         <Page
@@ -44,7 +41,7 @@ class App extends Component {
           handlePokemon={handlePokemonAction}
         />
         <Navigation
-          next={next}
+          // next={next}
           offset={pokemon.offset}
           handlePokemon={handlePokemonAction}
         />
@@ -54,7 +51,6 @@ class App extends Component {
 }
 
 const mapStateToProps = store => {
-  console.log(store);
   return {
     user: store.user, // вытащили из стора (из редьюсера user все в переменную thid.props.user)
     page: store.page,

@@ -7,7 +7,7 @@ import {
 const initialState = {
   pokemons: [],
   next: "",
-  offset: "",
+  offset: 0,
   error: "", // добавили для сохранения текста ошибки
   isFetching: false // добавили для реакции на статус "загружаю" или нет
 };
