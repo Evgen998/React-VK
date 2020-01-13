@@ -19,6 +19,7 @@ class App extends Component {
       handleLoginAction,
       handlePokemonAction
     } = this.props;
+
     return (
       <div className="app">
         <Page
@@ -43,6 +44,8 @@ class App extends Component {
         <Navigation
           // next={next}
           offset={pokemon.offset}
+          b={pokemon.b}
+          limit={pokemon.limit}
           handlePokemon={handlePokemonAction}
         />
       </div>

@@ -4,33 +4,36 @@ import PropTypes from "prop-types";
 
 export class Navigation extends React.Component {
   render() {
-    const { offset, handlePokemon } = this.props;
+    const { offset, handlePokemon, b, limit } = this.props;
+
+    console.log(b);
+
     if (offset !== 0) {
-      if (offset !== 960) {
+      if (offset !== b) {
         return [
-          <button id="1" onClick={() => handlePokemon(offset + 20)}>
+          <button id="1" onClick={() => handlePokemon(offset + limit)}>
             Дальше
           </button>,
 
-          this.props.offset / 20,
-          <button id="1" onClick={() => handlePokemon(offset - 20)}>
+          this.props.offset / limit,
+          <button id="1" onClick={() => handlePokemon(offset - limit)}>
             Назад
           </button>
         ];
       } else {
         return [
-          <button id="1" onClick={() => handlePokemon(offset - 20)}>
+          <button id="1" onClick={() => handlePokemon(offset - limit)}>
             Назад
           </button>,
-          this.props.offset / 20
+          this.props.offset / limit
         ];
       }
     } else {
       return [
-        <button id="1" onClick={() => handlePokemon(offset + 20)}>
+        <button id="1" onClick={() => handlePokemon(offset + limit)}>
           Дальше
         </button>,
-        this.props.offset / 20
+        this.props.offset / limit
       ];
     }
   }

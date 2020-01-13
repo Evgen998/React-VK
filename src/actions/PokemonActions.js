@@ -2,7 +2,8 @@ export const POKEMON_REQUEST = "POKEMON_REQUEST";
 export const POKEMON_SUCCESS = "POKEMON_SUCCESS";
 export const POKEMON_FAIL = "POKEMON_FAIL";
 
-export function handlePokemon(offset = 0, limit = 20, b = 1) {
+export function handlePokemon(offset = 0, limit = 20) {
+  const b = 960;
   let a = "offset=" + offset;
 
   let url = "https://pokeapi.co/api/v2/pokemon?offset";
@@ -18,7 +19,7 @@ export function handlePokemon(offset = 0, limit = 20, b = 1) {
       .then(data => {
         dispatch({
           type: POKEMON_SUCCESS,
-          payload: { ...data, offset }
+          payload: { ...data, offset, b, limit }
         });
       });
   };
